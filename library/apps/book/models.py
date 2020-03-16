@@ -37,7 +37,7 @@ class BookPage(models.Model):
 
 
 
-class comment(models.Model):
+class Comment(models.Model):
     book_page = models.ForeignKey(BookPage, on_delete= models.CASCADE)
     comment_author = models.CharField('Author of comment', max_length=150)
     comment_text = models.CharField('Author of comment', max_length=200)
