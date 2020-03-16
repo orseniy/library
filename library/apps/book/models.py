@@ -21,7 +21,7 @@ class Author(models.Model):
         return self.name
 
 
-class book_page(models.Model):
+class BookPage(models.Model):
     book_name = models.CharField('Book Name', max_length=150)
     book_desc = models.TextField()
     book_author = models.ManyToManyField(Author)
@@ -38,4 +38,7 @@ class book_page(models.Model):
 
 
 class comment(models.Model):
-    pass
+    book_page = models.ForeignKey(BookPage, on_delete= models.CASCADE)
+    comment_author = models.CharField('Author of comment', max_length=150)
+    comment_text = models.CharField('Author of comment', max_length=200)
+    comment_pub = models.DateTimeField('Date of comment publishing')
