@@ -17,7 +17,9 @@ from django.contrib import admin
 from django.urls import path, include
 
 urlpatterns = [
+
+    path('grappelli/', include('grappelli.urls')), # grappelli URLS
+    path('admin/', admin.site.urls),
     path('', include('main_page.urls')),
     path('book/', include('book.urls')),
-    path('admin/', admin.site.urls),
 ]

@@ -29,6 +29,12 @@ class BookPage(models.Model):
     book_genre = models.ManyToManyField(Genre)
     book_crt_date = models.DateTimeField(default=timezone.now)
     book_pub_date = models.DateTimeField(blank=True, null=True)
+    book_file = models.FileField('Book File')
+    book_dwnd_count = models.IntegerField('Download Count')
+
+    class Meta:
+        verbose_name = 'BookPage'
+        verbose_name_plural = 'BookPage`s'
 
     def publish(self):
         self.published_date = timezone.now()
@@ -42,3 +48,7 @@ class Comment(models.Model):
     comment_author = models.CharField('Author of comment', max_length=150)
     comment_text = models.CharField('Comment text', max_length=200)
     comment_pub = models.DateTimeField('Date of comment publishing')
+
+    class Meta:
+        verbose_name = 'Comment'
+        verbose_name_plural = 'Comment`s'
