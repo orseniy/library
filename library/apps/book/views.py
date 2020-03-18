@@ -1,8 +1,7 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from .models import BookPage, Genre, Author, Comment
 
 def index(request):
-    return HttpResponse("here page with " " request path ")
+    latest_books_list = BookPage.objects.order_by('-book_pub_date')[:5]
+    return render(request, 'book/list.html', {'latest_books_list':latest_books_list})
 
-
-# Create your views here.
